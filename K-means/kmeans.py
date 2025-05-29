@@ -15,6 +15,8 @@ y_predict = kmeans.predict(x_test)
 print(y_test)
 print(y_predict)
 print(accuracy_score(y_test, y_predict))
+# 关于为什么使用下面这个准确率计算方式，我写了个博客
+# https://blog.csdn.net/h3076817064/article/details/148320313?sharetype=blogdetail&sharerId=148320313&sharerefer=PC&sharesource=h3076817064&spm=1011.2480.3001.8118
 print(adjusted_rand_score(y_test, y_predict))
 
 
