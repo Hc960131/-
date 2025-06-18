@@ -13,8 +13,8 @@ def image_stride(image, kernel, stride_size=3):
 
 
 def check(image, shape, stride):
-    needed = (np.array(shape) - 1) * np.array(stride)
-    if (needed >= image.nbytes).any():
+    needed = np.sum((np.array(shape) - 1) * np.array(stride))
+    if needed >= image.nbytes:
         raise ValueError("数组越界")
     return as_strided(image,
                       shape=shape,
@@ -22,10 +22,10 @@ def check(image, shape, stride):
 
 
 
-# image = np.random.randn(512, 512)
-# stride_size = 5
-# kernel = np.random.rand(stride_size, stride_size)
-# print(image_stride(image, kernel, stride_size).shape)
+image = np.random.randn(512, 512)
+stride_size = 5
+kernel = np.random.rand(stride_size, stride_size)
+print(image_stride(image, kernel, stride_size).shape)
 
 arr = np.arange(12)
 print(arr.dtype)
